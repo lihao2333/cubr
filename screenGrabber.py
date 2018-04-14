@@ -4,7 +4,7 @@
 
 # Some code in this module is adapted from color_histogram.py,
 # which is provided in the OpenCV-2.4.4 release
-# Go here for OpenCV downloads: http://opencv.org/downloads.html
+# Go here for OpenCV downloads: http://opencv2.org/downloads.html
 # The code that I did not write is clearly marked as follows:
 
             # I did not write this code:
@@ -16,7 +16,7 @@
 # sys, Tkinter, or getopt modules.
 
 import numpy as np
-import cv, cv2
+import cv2
 import video
 import sys
 import getopt
@@ -272,7 +272,7 @@ class DemoCube(object):
                            center - up * 0.5 + right * 0.5)
                 corners = [corner.flatten(self.camera) for corner in corners]
                 corners = [(int(corner[0]), int(corner[1])) for corner in corners]
-                cv.FillConvexPoly(cv.fromarray(vis), 
+                cv2.FillConvexPoly(cv2.fromarray(vis), 
                     corners, colorTuple(self.colors[i]), lineType=4, shift=0)
 
         for i in xrange(len(self.colors)):
@@ -288,7 +288,7 @@ class DemoCube(object):
 
                 for j in xrange(len(corners)):
                     k = (j + 1) % (len(corners))
-                    cv.Line(cv.fromarray(vis), corners[j], corners[k], (0,0,0))
+                    cv2.Line(cv2.fromarray(vis), corners[j], corners[k], (0,0,0))
 
     def setColors(self, colors, faceIndex):
         if faceIndex > 5:
