@@ -182,6 +182,7 @@ def averageRGB(img):
                     red += b[0]
                     green += b[1]
                     blue += b[2]
+    if num==0:num=1
     red /= num
     green /= num
     blue /= num
@@ -272,7 +273,8 @@ class DemoCube(object):
                            center - up * 0.5 + right * 0.5)
                 corners = [corner.flatten(self.camera) for corner in corners]
                 corners = [(int(corner[0]), int(corner[1])) for corner in corners]
-                cv2.FillConvexPoly(cv2.fromarray(vis), 
+                corners = np.array(corners)
+                cv2.fillConvexPoly(vis, 
                     corners, colorTuple(self.colors[i]), lineType=4, shift=0)
 
         for i in xrange(len(self.colors)):
@@ -288,7 +290,7 @@ class DemoCube(object):
 
                 for j in xrange(len(corners)):
                     k = (j + 1) % (len(corners))
-                    cv2.Line(cv2.fromarray(vis), corners[j], corners[k], (0,0,0))
+                    cv2.line(vis, corners[j], corners[k], (0,0,0))
 
     def setColors(self, colors, faceIndex):
         if faceIndex > 5:
@@ -494,7 +496,7 @@ def timer(data):
 
     # I did not write this code:
     ##############################
-    cv2.imshow('Cube Input', vis)
+    cv2.imshow('Cube Input', frame)
 
     ch = 0xff & cv2.waitKey(20) # Gets keyboard input
     ##############################
