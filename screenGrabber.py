@@ -182,7 +182,7 @@ def averageRGB(img):
                     red += b[0]
                     green += b[1]
                     blue += b[2]
-    if num==0:num=1
+    #if num==0:num=1
     red /= num
     green /= num
     blue /= num
@@ -373,6 +373,7 @@ def timer(data):
     # I did not write this code:
     ##############################
     ret, frame = data.cam.read()
+    frame = cv2.resize(frame,(1254,668))
     vis = frame.copy()
     hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
@@ -496,7 +497,7 @@ def timer(data):
 
     # I did not write this code:
     ##############################
-    cv2.imshow('Cube Input', frame)
+    cv2.imshow('Cube Input', vis)
 
     ch = 0xff & cv2.waitKey(20) # Gets keyboard input
     ##############################
