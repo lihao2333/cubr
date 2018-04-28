@@ -1,6 +1,7 @@
 # cube.py
 # Chris Barker
 # CMU S13 15-112 Term Project
+# -*- coding: utf-8 -*-  
 
 from Tkinter import *
 from geometry import *
@@ -20,7 +21,7 @@ def loadObject(path, index):
             print 'Error reading data!', e
     return eval(data)[index]
 
-def drawChevron(canvas, cx, cy, r):
+def drawChevron(canvas, cx, cy, r):# 画>>符号(快进)
     coords = (cx - 0.3 * r, cy - 0.5 * r, 
               cx - 0.2 * r, cy - 0.5 * r,
               cx + 0.3 * r, cy,
@@ -31,13 +32,13 @@ def drawChevron(canvas, cx, cy, r):
               cx - 0.3 * r, cy - 0.4 * r)
     canvas.create_polygon(*coords, fill='white', state='disabled')
 
-def brief(L):
+def brief(L):#获取方向
     s = ''
     for e in L:
         s += str(e[0])
     return s
 
-def reversal(move):
+def reversal(move):#操作翻转
     if type(move) == tuple:
         move = move[0]
     if type(move) == str:
@@ -47,7 +48,7 @@ def reversal(move):
             move = move + "'"
     return move
 
-def darken(color):
+def darken(color):#RGB值减半
     if color[0] != '#':
         if color == 'white':
             color = '#ffffff'
