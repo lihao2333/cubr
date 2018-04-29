@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-  
 # qbr.py
 # Chris Barker
 # CMU S13 15-112 Term Project
-# -*- coding: utf-8 -*-  
 
 from app import App
 import Tkinter

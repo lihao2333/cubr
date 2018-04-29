@@ -1,7 +1,7 @@
+# -*- coding: utf-8 -*-  
 # cube.py
 # Chris Barker
 # CMU S13 15-112 Term Project
-# -*- coding: utf-8 -*-  
 
 from Tkinter import *
 from geometry import *
@@ -89,24 +89,26 @@ class Cube(object):
                   -K_HAT : 'white'}
 
     helpStrings = { 
-        'general': 'Welcome to Cubr!\nHover over a button below to view help for it.\n\n\
-The Rubik\'s Cube, invented in 1974 by Erno Rubik, is one of the most popular toys of all time.\n\
-It consists of six independently rotating faces, each with nine colored stickers.\n\
-The goal is to arrange the cube so that each face contains only one color.\n\
-In 1981 David Singmaster published his popular three-layer solution method, which is used in this program.\n\
-With practice, most people could solve the cube in under a minute. Since then, speedcubing has taken off and the current record is held by \n\
-Mats Valk, who solved the cube in 5.55 seconds. In 2010, Tomas Rokicki proved that any Rubik\'s cube can be solved in 20 face rotations or less.\n\n\
-This program will interactively guide you through the three-layer solution algorithm.\n\
-At each step of the solution, you will be given information describing the step you are completing.\n\
-You may either work with a randomly generated Rubik\'s Cube, or use your webcam to input the current configuration of your own cube!\n\n\
-Many people think of solving the cube as moving the 54 stickers into place. However, it is much more helpful to think about it as\n\
-moving 20 "blocks" (12 edges, 8 corners) into place. The centers of each face always stay in the same orientation relative to each other,\n\
-and the stickers on each block always stay in place relative to each other.\n\
-Solving the first layer means getting four edges and four corners in place so that one face is all the same color.\n\
-This is intuitive for many people, but by being conscious of the algorithms you use, you can improve your time and consistency.\n\
-The second layer of blocks requires only one algorithm, and involves moving only four edge pieces into place.\n\
-The third and final layer is the most complicated, and requires separate algorithms for orienting (getting the stickers facing the right way)\n\
-and for permuting (getting the individual blocks into place). With enough practice, you can be an expert cube solver!\n\
+        'general': '欢迎来到cubr. \n\n\
+这是CMU的Chris的一个开源项目,见https://github.com/bluquar/cubr\n\
+该项目受MIT License 保护, 任何人可以进行修改, 发布, 商业用途\n\
+我们主要是学习他的代码, 解决几个bug, 然后汉化. 纯粹是出于兴趣.\n\n\
+1974年Erno Rubik发明了魔方, 是当时最流行的玩具之一\n\
+它包含6个独立的可选转的face, 每一个face有9个colored sticker\n\
+目标是通过旋转使得每一个face的sticker color相同\n\
+1981年, David Singmaster 发表了流行的 three-layer 解法, 也是本程序所用的\n\
+通过练习, 大部分的人都可以在一分钟之内还原魔方\n\
+之后, 快速还原魔方开始兴起, 当前记录保持者是Mats Valk,他只永乐5.55s\n\
+2010年 Tomas Rokicki证明了任意魔方可以在20步以内还原.\n\n\
+本程序旨在教你three-layer解法, 每次旋转都会告诉你这一步的目的.\n\
+你可以随机生成一个魔方, 或者通过摄像头采集你的魔方信息.\n\n\
+大部分的人把魔方看作54个sticker, 但是我建议你把它看作20个blocks(12 edges  8 corners)\n\
+每一个face的中心和其他face的中心相对位置关系始终不变\n\
+每一个block上的sticker相对位置始终不变\n\
+First Layer: 拼底层的图案\n\
+Seconf Layer: 反复用一种方法复位第二层\n\
+Third Layer: 相对来说比较复杂,需要多个算法实现orienting 和 permuting\n\n\
+熟能生巧.\n\
 ',
 
         'pause': 'During a guided solution, press this button to pause your progress.',
@@ -133,7 +135,7 @@ rotates to the next face so that your cube will be interpreted accurately.',
     faceColors = { }
 
     @classmethod
-    def setFaceColors(cls):
+    def setFaceColors(cls):#block{color1,color2,color3}
         cls.faceColors = {}
         for z in xrange(3):
             for y in xrange(3):
@@ -1272,5 +1274,5 @@ Non-graphical; meant for algorithmic purposes."""
     def setBare(self):
         self.state = copy.deepcopy(CubeState.barebones)
 
-    def setSolved(self):
+    def setSolved(self):#状态复位
         self.state = copy.deepcopy(CubeState.solvedState)

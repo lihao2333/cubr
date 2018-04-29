@@ -7,7 +7,7 @@ from Tkinter import N, E, S, W, ALL, BOTH
 
 class App(object):
     """ docstring """
-    def __init__(self, width=1280, height=720, name='App', bgColor = '#000000'):
+    def __init__(self, width=1280, height=680, name='App', bgColor = '#000000'):
         (self.width, self.height) = width, height
         self.name = name
         
